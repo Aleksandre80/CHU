@@ -82,10 +82,10 @@ echo "Processing complete for {config['input_dir']} with Q-score {qscore}"
     input_dir_entry.pack(padx=20, pady=5)
     tk.Button(root, text="Browse", command=lambda: input_dir_entry.insert(0, filedialog.askdirectory())).pack()
 
-    tk.Label(root, text="Select the genome file REF_GENOME (.fasta):").pack()
+    tk.Label(root, text="Select the genome file REF_GENOME (.mmi):").pack()
     ref_genome_entry = tk.Entry(root, width=50)
     ref_genome_entry.pack(padx=20, pady=5)
-    tk.Button(root, text="Browse", command=lambda: ref_genome_entry.insert(0, filedialog.askopenfilename(filetypes=[("FASTA files", "*.fasta")]))).pack()
+    tk.Button(root, text="Browse", command=lambda: ref_genome_entry.insert(0, filedialog.askopenfilename(filetypes=[("FASTA files", "*.mmi")]))).pack()
 
     tk.Label(root, text="Enter Q-scores separated by spaces:").pack()
     qs_score_entry = tk.Entry(root, width=50)

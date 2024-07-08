@@ -32,6 +32,7 @@ def launch_vcf_creator_ui():
         script_path = "create_vcf_all.sh"
         with open(script_path, "w") as script_file:
             script_file.write("#!/bin/bash\n\n")
+            script_file.write("source ~/miniconda3/etc/profile.d/conda.sh\n")
             script_file.write("conda activate genomics\n\n")
             for config in configurations:
                 script_file.write(f"samtools faidx {config['ref_genome']}\n")
@@ -39,9 +40,11 @@ def launch_vcf_creator_ui():
                 script_file.write(f"bcftools mpileup -Ou -f {config['ref_genome']} {config['bam_file']} | bcftools call -mv -Ob -o {config['output_vcf']}.bcf\n")
                 script_file.write(f"bcftools index {config['output_vcf']}.bcf\n")
                 script_file.write(f"bcftools view -Oz -o {config['output_vcf']}.vcf.gz {config['output_vcf']}.bcf\n")
-                script_file.write(f"tabix -p vcf {config['output_vcf']}.vcf.gz\n\n")
+                script_file.write(f"tabix -p vcf {config['output_vcf']}.vcf.gz\n")
+                script_file.write(f"gunzip {config['output_vcf']}.vcf.gz\n\n")
             script_file.write("echo \"Variant calling and file processing completed.\"\n")
         messagebox.showinfo("Done", f"All configurations have been written to {script_path}. Please run the script manually.")
+
 
     tk.Label(root, text="Select the genome reference file (.fa):").pack()
     ref_genome_entry = tk.Entry(root, width=50)

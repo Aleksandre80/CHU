@@ -43,10 +43,10 @@ def launch_vcf_creator_ui():
             script_file.write("echo \"Variant calling and file processing completed.\"\n")
         messagebox.showinfo("Done", f"All configurations have been written to {script_path}. Please run the script manually.")
 
-    tk.Label(root, text="Select the genome reference file (.mmi):").pack()
+    tk.Label(root, text="Select the genome reference file (.fa):").pack()
     ref_genome_entry = tk.Entry(root, width=50)
     ref_genome_entry.pack(padx=20, pady=5)
-    tk.Button(root, text="Browse", command=lambda: ref_genome_entry.insert(0, filedialog.askopenfilename(filetypes=[("FASTA files", "*.mmi")]))).pack()
+    tk.Button(root, text="Browse", command=lambda: ref_genome_entry.insert(0, filedialog.askopenfilename(filetypes=[("FASTA files", "*.fa")]))).pack()
 
     tk.Label(root, text="Select the BAM file:").pack()
     bam_file_entry = tk.Entry(root, width=50)

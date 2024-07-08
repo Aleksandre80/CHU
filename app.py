@@ -1,6 +1,7 @@
 import tkinter as tk
 from basecalling import launch_config_ui
 from merge import launch_bam_merger_ui
+from vcf_creator_ui import launch_vcf_creator_ui
 
 def open_basecalling():
     launch_config_ui()
@@ -9,7 +10,8 @@ def open_bam():
     launch_bam_merger_ui()
 
 def open_vcf_creator():
-    print("VCF creation functionality here")
+    launch_vcf_creator_ui()
+    print("open vcf")
 
 def open_full_pipeline():
     print("Full pipeline functionality here")
